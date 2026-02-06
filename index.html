@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<!-- モバイル端末用設定　ダブルタップ制御-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,
+            user-scalable=no">
+
+<!-- Pyscript読み込み -->
+<script type="module" src="https://pyscript.net/release/2026.2.1/core.js"></script>
+
+<!-- HTML本体 -->
+<body>
+    <div style="padding:2em;">
+        <input id="user" type="text" placeholder="1から50までの数字">
+        <button mpy-click="start">数当て</button><br>
+        <div id="result"></div>
+    </div>
+</body>
+
+<!-- pyscript -->
+<script type="mpy">
+    import random
+    from pyscript import document
+
+    # 1～50までの乱数
+    ans=random.randomint(1,50)
+    
+    # グローバル変数
+    n=0
+    min=1
+    max=50
+
+    # 呼び出し関数
+    def start(event):
+
+        # ユーザーからの入力
+        user=document.getElementById("user").value
+        # 型変換（文字→整数値）
+        x=int(user)
+        # 回数のカウント
+        n=n+1
+
+        # 判定
+        if x==str(ans):
+            msg=f"お見事！　正解は、{ans}です。あなたは{n}回で当てました！"
+            color="red"
+        elif x<min:
+            msg=f"小さすぎます。{min}以上です。"
+            color="black"
+        elif x>max:
+            msg=f"大きすぎます。{max}以下です。"
+            color="black"
+        elif x>min and x<ans:
+            min=x
+            msg=f"ヒント：{min} => {max}"
+            color="blue"
+        elif x<max and x>ans:
+            max=x
+            msg=f"ヒント：{min} => {max}"
+            color="blue"
+        else:
+            msg=f"もう一度、入力してください"
+            color="black"
+        # 結果表示
+        result=document.getElementById("result")
+        result.textContent=msg # テキスト更新
+        result.style.color=color # 文字色を変更
+</script>
