@@ -15,7 +15,7 @@
 
 <body>
     <div style="padding:2em;">
-        <input id="user" type="text" placeholder="1から50までの数字">
+        <input id="user" type="text" placeholder="1から50までの整数">
         <button mpy-click="start">数当て</button><br>
         <div id="result"></div>
     </div>
@@ -49,7 +49,7 @@
 
         except ValueError:
             result=document.getElementById("result")
-            result.textContent="1から50までの数字を入力してください"
+            result.textContent="1から50までの整数を入力してください"
             result.style.color="black"
             return
 
@@ -78,6 +78,7 @@
         result=document.getElementById("result")
         result.textContent=msg # テキスト更新
         result.style.color=color # 文字色を変更
+        document.getElementById("user").value = "" # 入力欄を空にする
 
     # 関数2（Enterキー）
     def on_keydown(event):
