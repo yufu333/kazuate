@@ -33,7 +33,15 @@
     low=1
     high=50
 
-    # 呼び出し関数
+    # 関数１（Enterキー）
+    def on_keydown(event):
+
+    if event.key == "Enter":
+        start(event)
+        document.getElementById("user").addEventListener("keydown", on_keydown)
+
+        
+    # 関数２
     def start(event):
 
         # 関数内のグローバル変数の宣言
