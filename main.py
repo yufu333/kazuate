@@ -36,6 +36,9 @@ def start(event):
     if x==ans:
         msg=f"お見事！　正解は、{ans}です。あなたは{n}回で当てました！"
         color="red"
+        # もう一回ボタンを表示
+        document.getElementById("retry").style.display="inline"
+
     elif x<low:
         msg=f"小さすぎます。{low}以上です。"
         color="black"
@@ -63,3 +66,17 @@ def on_keydown(event):
     
 # ここは関数の外
 document.getElementById("user").addEventListener("keydown", on_keydown)
+
+# 関数3（もう一回？）
+def retry(event):
+    global n, ans, low, high
+    n=0
+    low=1
+    high=50
+    ans=random.randint(1,50)
+    result=document.getElementById("result")
+    result.textContent="新しいゲーム！。1から50までの整数を入力してください。"
+    result.style.color="black"
+    document.getElementById("user").value = "" # 入力欄を空にする
+    # もう一回ボタンを非表示
+    document.getElementById("retry").style.display="none"
