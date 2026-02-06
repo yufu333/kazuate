@@ -75,7 +75,7 @@ def retry(event):
     high=50
     ans=random.randint(1,50)
     result=document.getElementById("result")
-    result.textContent="新しいゲーム！。1から50までの整数を入力してください。"
+    result.textContent="新しいゲーム！"
     result.style.color="black"
     document.getElementById("user").value = "" # 入力欄を空にする
     # もう一回ボタンを非表示
