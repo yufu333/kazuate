@@ -32,20 +32,9 @@
     n=0
     low=1
     high=50
-
-    # 関数1（Enterキー）
-    def on_keydown(event):
-
-        if event.key == "Enter":
-        start(event)
     
-    # ここは関数の外
-    document.getElementById("user").addEventListener("keydown", on_keydown)
-
-    
-    # 関数2
+    # 関数1
     def start(event):
-
         # 関数内のグローバル変数の宣言
         global n, ans, low, high
         
@@ -77,21 +66,26 @@
         elif x>high:
             msg=f"大きすぎます。{high}以下です。"
             color="black"
-        elif x>low and x<ans:
+        elif x<ans:
             low=x
             msg=f"ヒント：{low} => {high}"
             color="blue"
-        elif x<high and x>ans:
+        else:
             high=x
             msg=f"ヒント：{low} => {high}"
             color="blue"
-        else:
-            msg=f"もう一度、入力してください"
-            color="black"
         # 結果表示
         result=document.getElementById("result")
         result.textContent=msg # テキスト更新
         result.style.color=color # 文字色を変更
+
+    # 関数2（Enterキー）
+    def on_keydown(event):
+        if event.key == "Enter":
+            start(event)
+    
+    # ここは関数の外
+    document.getElementById("user").addEventListener("keydown", on_keydown)
     </script>
 </body>
 </html>
