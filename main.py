@@ -62,4 +62,4 @@ def on_keydown(event):
         start(event)
     
 # ここは関数の外
- document.getElementById("user").addEventListener("keydown", on_keydown)
+document.getElementById("user").addEventListener("keydown", on_keydown)
