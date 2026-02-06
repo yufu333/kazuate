@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,
             user-scalable=no">
     <script type="module" src="https://pyscript.net/releases/2026.2.1/core.js"></script>
+    <style>
+    #result {font-size: 24px;font-weight: bold;}
+    </style>
 </head>
 
 <body>
     <div style="padding:2em;">
         <input id="user" type="text" placeholder="1から50までの数字">
         <button mpy-click="start">数当て</button><br>
-        <div id="result" style="font-size:4em;"></div>
+        <div id="result"></div>
     </div>
 
     <!-- pyscript -->
@@ -80,5 +83,6 @@
 </body>
 
 </html>
+
 
 
